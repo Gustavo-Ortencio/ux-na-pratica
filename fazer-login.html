@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | UX na Prática</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div id="popup-mensagem"></div>
+
+    <header>
+        <div class="container">
+            <a class="logo" href="index.html">UX<span>naPrática</span></a>
+            
+            <div class="header-actions">
+                <div class="dropdown">
+                    <span class="dropdown-btn">Conteúdo do curso ▾</span>
+                    <div class="dropdown-content">
+                        <a href="informacoes.html">Resumo do curso</a>
+                        <a href="modulo1.html">Módulo 1: Fundamentos</a>
+                        <a href="modulo2.html">Módulo 2: Pesquisa</a>
+                        <a href="modulo3.html">Módulo 3: Double Diamond</a>
+                        <a href="modulo4.html">Módulo 4: Heurísticas</a>
+                        <a href="modulo5.html">Módulo 5: Projeto Prático</a>
+                    </div>
+                </div>
+
+                <a href="login.html" class="user-icon" title="Minha Conta">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container auth-section">
+        <h1>Acesse sua conta</h1>
+        
+        <div class="auth-card">
+            <form id="form-login">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required placeholder="seuemail@exemplo.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="senha">Senha</label>
+                    <input type="password" id="senha" required placeholder="Digite sua senha">
+                </div>
+
+                <div class="btn-container">
+                    <button type="submit" id="btn-submit" class="btn-confirmar">Confirmar</button>
+                </div>
+
+                <a href="recuperar-senha.html" class="forgot-password">Esqueci minha senha</a>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">© 2026 UX na Prática · Aprenda, pratique, evolua.</div>
+    </footer>
+
+    <script>
+        const inputs = document.querySelectorAll('#form-login input');
+        const formLogin = document.getElementById('form-login');
+        const btnSubmit = document.getElementById('btn-submit');
+        const popupMensagem = document.getElementById('popup-mensagem');
+        const emailInput = document.getElementById('email');
+
+        function validarEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+        function verificarCampos() {
+            let todosPreenchidos = true;
+            inputs.forEach(input => {
+                if (input.value.trim() === '') {
+                    todosPreenchidos = false;
+                }
+            });
+
+            if (todosPreenchidos) {
+                btnSubmit.classList.add('ativo');
+            } else {
+                btnSubmit.classList.remove('ativo');
+            }
+        }
+
+        inputs.forEach(input => {
+            input.addEventListener('input', verificarCampos);
+        });
+
+        function executarLogin(e) {
+            if (e) e.preventDefault();
+            
+            let todosPreenchidos = true;
+            inputs.forEach(input => {
+                if (input.value.trim() === '') {
+                    todosPreenchidos = false;
+                }
+            });
+
+            if (!todosPreenchidos) {
+                popupMensagem.style.backgroundColor = '#ff4d4d';
+                popupMensagem.textContent = 'Complete todos os campos!';
+                popupMensagem.style.display = 'block';
+                setTimeout(() => { popupMensagem.style.display = 'none'; }, 3000);
+                return;
+            }
+
+            if (!validarEmail(emailInput.value)) {
+                popupMensagem.style.backgroundColor = '#ff4d4d';
+                popupMensagem.textContent = 'Por favor, insira um email válido!';
+                popupMensagem.style.display = 'block';
+                setTimeout(() => { popupMensagem.style.display = 'none'; }, 3000);
+                return;
+            }
+
+            popupMensagem.style.backgroundColor = '#28a745';
+            popupMensagem.textContent = 'Login realizado com sucesso!';
+            popupMensagem.style.display = 'block';
+
+            setTimeout(() => {
+                popupMensagem.style.display = 'none';
+                window.location.href = 'perfil.html';
+            }, 3000);
+        }
+
+        formLogin.addEventListener('submit', executarLogin);
+    </script>
+</body>
+</html>

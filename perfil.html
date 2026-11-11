@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Perfil | UX na Prática</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilos específicos para a página de Perfil baseados na imagem de referência */
+        .perfil-card {
+            background: #ffffff;
+            width: 100%;
+            max-width: 800px;
+            padding: 50px 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(32, 32, 51, 0.05);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        .perfil-avatar {
+            width: 90px;
+            height: 90px;
+            background-color: #dbeafc;
+            border: 3px solid #0056b3;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            color: #0056b3;
+        }
+
+        .perfil-avatar svg {
+            width: 50px;
+            height: 50px;
+            fill: currentColor;
+        }
+
+        .perfil-titulo {
+            font-size: 1.5rem;
+            color: var(--escuro);
+            margin-bottom: 30px;
+            font-weight: normal;
+        }
+
+        .perfil-email {
+            font-size: 1rem;
+            color: var(--escuro);
+            margin-top: 25px;
+            margin-bottom: 40px;
+        }
+
+        /* Botão Acessar Curso */
+        .btn-acessar-curso {
+            display: inline-block;
+            background-color: var(--roxo);
+            color: white;
+            padding: 12px 35px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .btn-acessar-curso:hover {
+            background-color: #5034c6;
+        }
+
+        /* Botão Sair estilizado como esqueci minha senha */
+        .btn-sair-container {
+            align-self: flex-start;
+            margin-top: 20px;
+        }
+
+        .btn-sair {
+            color: #ff4d4d;
+            font-size: 0.95rem;
+            text-decoration: none;
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .btn-sair:hover {
+            text-decoration: underline;
+        }
+
+        .btn-sair svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <a class="logo" href="index.html">UX<span>naPrática</span></a>
+            
+            <div class="header-actions">
+                <div class="dropdown">
+                    <span class="dropdown-btn">Conteúdo do curso ▾</span>
+                    <div class="dropdown-content">
+                        <a href="informacoes.html">Resumo do curso</a>
+                        <a href="modulo1.html">Módulo 1: Fundamentos</a>
+                        <a href="modulo2.html">Módulo 2: Pesquisa</a>
+                        <a href="modulo3.html">Módulo 3: Double Diamond</a>
+                        <a href="modulo4.html">Módulo 4: Heurísticas</a>
+                        <a href="modulo5.html">Módulo 5: Projeto Prático</a>
+                    </div>
+                </div>
+
+                <a href="perfil.html" class="user-icon" title="Minha Conta">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container auth-section">
+        <div class="perfil-card">
+            <!-- Ícone de perfil grande conforme a referência -->
+            <div class="perfil-avatar">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+            </div>
+
+            <h1 class="perfil-titulo">Este é seu perfil, (Nome) (Sobrenome)!</h1>
+
+            <div>
+                <a href="conteudo.html" class="btn-acessar-curso">Acessar Curso</a>
+            </div>
+
+            <p class="perfil-email">Email cadastrado: exemplo@gmail.com</p>
+
+            <div class="btn-sair-container">
+                <a href="login.html" class="btn-sair" title="Sair da conta">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M10 17v-3H3v-4h7V7l5 5-5 5zm9-14H5c-1.1 0-2 .9-2 2v4h2V5h14v14H5v-2H3v4c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/>
+                    </svg>
+                    Sair
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">© 2026 UX na Prática · Aprenda, pratique, evolua.</div>
+    </footer>
+
+</body>
+</html>

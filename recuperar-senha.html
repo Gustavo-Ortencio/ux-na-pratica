@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar Senha | UX na Prática</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div id="popup-mensagem"></div>
+
+    <header>
+        <div class="container">
+            <a class="logo" href="index.html">UX<span>naPrática</span></a>
+            
+            <div class="header-actions">
+                <div class="dropdown">
+                    <span class="dropdown-btn">Conteúdo do curso ▾</span>
+                    <div class="dropdown-content">
+                        <a href="informacoes.html">Resumo do curso</a>
+                        <a href="modulo1.html">Módulo 1: Fundamentos</a>
+                        <a href="modulo2.html">Módulo 2: Pesquisa</a>
+                        <a href="modulo3.html">Módulo 3: Double Diamond</a>
+                        <a href="modulo4.html">Módulo 4: Heurísticas</a>
+                        <a href="modulo5.html">Módulo 5: Projeto Prático</a>
+                    </div>
+                </div>
+
+                <a href="login.html" class="user-icon" title="Minha Conta">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container auth-section">
+        <h1>Recuperar senha</h1>
+        
+        <div class="auth-card">
+            <form id="form-recuperar">
+                <div class="form-group">
+                    <label for="email">Digite seu email cadastrado</label>
+                    <input type="email" id="email" required placeholder="seuemail@exemplo.com">
+                </div>
+
+                <div class="btn-container">
+                    <button type="submit" id="btn-submit" class="btn-confirmar">Enviar</button>
+                </div>
+
+                <span class="back-link"><a href="login.html">Voltar</a></span>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">© 2026 UX na Prática · Aprenda, pratique, evolua.</div>
+    </footer>
+
+    <script>
+        const inputEmail = document.getElementById('email');
+        const formRecuperar = document.getElementById('form-recuperar');
+        const btnSubmit = document.getElementById('btn-submit');
+        const popupMensagem = document.getElementById('popup-mensagem');
+
+        function validarEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+        function verificarCampos() {
+            if (inputEmail.value.trim() !== '') {
+                btnSubmit.classList.add('ativo');
+            } else {
+                btnSubmit.classList.remove('ativo');
+            }
+        }
+
+        inputEmail.addEventListener('input', verificarCampos);
+
+        function executarRecuperacao(e) {
+            if (e) e.preventDefault();
+
+            if (inputEmail.value.trim() === '') {
+                popupMensagem.style.backgroundColor = '#ff4d4d';
+                popupMensagem.textContent = 'Por favor, preencha o campo de email!';
+                popupMensagem.style.display = 'block';
+                
+                setTimeout(() => {
+                    popupMensagem.style.display = 'none';
+                }, 3000);
+            } else if (!validarEmail(inputEmail.value)) {
+                popupMensagem.style.backgroundColor = '#ff4d4d';
+                popupMensagem.textContent = 'Por favor, insira um email válido!';
+                popupMensagem.style.display = 'block';
+                
+                setTimeout(() => {
+                    popupMensagem.style.display = 'none';
+                }, 3000);
+            } else {
+                popupMensagem.style.backgroundColor = '#28a745';
+                popupMensagem.textContent = 'Email enviado com sucesso!';
+                popupMensagem.style.display = 'block';
+                
+                inputEmail.value = '';
+                btnSubmit.classList.remove('ativo');
+
+                setTimeout(() => {
+                    popupMensagem.style.display = 'none';
+                }, 3000);
+            }
+        }
+
+        formRecuperar.addEventListener('submit', executarRecuperacao);
+    </script>
+</body>
+</html>

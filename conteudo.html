@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assistir Aula | UX na Prática</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a class="logo" href="index.html">UX<span>naPrática</span></a>
+            
+            <div class="header-actions">
+                <div class="dropdown">
+                    <span class="dropdown-btn">Conteúdo do curso ▾</span>
+                    <div class="dropdown-content">
+                        <a href="informacoes.html">Resumo do curso</a>
+                        <a href="modulo1.html">Módulo 1: Fundamentos</a>
+                        <a href="modulo2.html">Módulo 2: Pesquisa</a>
+                        <a href="modulo3.html">Módulo 3: Double Diamond</a>
+                        <a href="modulo4.html">Módulo 4: Heurísticas</a>
+                        <a href="modulo5.html">Módulo 5: Projeto Prático</a>
+                    </div>
+                </div>
+
+                <a href="login.html" class="user-icon" title="Minha Conta">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="aula-layout">
+            <div class="player-section">
+                <div class="video-header">
+                    <h1 class="video-title">Aula 1 - Introdução ao UX Design</h1>
+                    <button type="button" class="btn-proximo" onclick="proximaAula()">
+                        Próximo
+                        <svg viewBox="0 0 24 24">
+                            <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="video-container">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
+                </div>
+                
+                <div class="descricao-box">
+                    <h2>Descrição</h2>
+                    <p id="descricaoTexto" class="descricao-texto recolhido">Nesta aula, exploraremos os conceitos essenciais e a importância da experiência do usuário, introduzindo metodologias e práticas fundamentais para criar soluções digitais intuitivas e centradas nas pessoas.</p>
+                    <span id="btnVerMais" class="ver-mais" onclick="toggleDescricao()">Ver mais</span>
+                </div>
+
+                <div class="comentarios-section">
+                    <h3>Comentários (0)</h3>
+                    <div class="comentario-input-wrapper">
+                        <input type="text" id="comentarioInput" class="comentario-input" placeholder="Escreva seu comentário aqui" oninput="verificarTextoComentario(this)">
+                        <button type="button" id="btnEnviarComentario" class="btn-enviar-comentario" title="Enviar comentário" onclick="enviarComentario()">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modulos-sidebar">
+                <div class="modulo-item">
+                    <div class="modulo-header" onclick="toggleModulo(this)">
+                        <span>Módulo 1: Fundamentos de UX</span>
+                        <span class="seta">▶</span>
+                    </div>
+                    <ul class="aulas-lista">
+                        <li>Aula 1 - Introdução ao UX Design</li>
+                        <li>Aula 2 - Design Centrado no Usuário</li>
+                        <li>Aula 3 - Princípios de Usabilidade</li>
+                        <li>Aula 4 - O Papel do UX Designer</li>
+                        <li>Aula 5 - Tendências de Mercado</li>
+                    </ul>
+                </div>
+
+                <div class="modulo-item">
+                    <div class="modulo-header" onclick="toggleModulo(this)">
+                        <span>Módulo 2: Pesquisa com Usuários</span>
+                        <span class="seta">▶</span>
+                    </div>
+                    <ul class="aulas-lista">
+                        <li>Aula 1 - Métodos de Pesquisa</li>
+                        <li>Aula 2 - Entrevistas Qualitativas</li>
+                        <li>Aula 3 - Mapas de Empatia</li>
+                        <li>Aula 4 - Personas e Jornadas</li>
+                        <li>Aula 5 - Análise de Dados</li>
+                    </ul>
+                </div>
+
+                <div class="modulo-item">
+                    <div class="modulo-header" onclick="toggleModulo(this)">
+                        <span>Módulo 3: Double Diamond</span>
+                        <span class="seta">▶</span>
+                    </div>
+                    <ul class="aulas-lista">
+                        <li>Aula 1 - Visão Geral do Framework</li>
+                        <li>Aula 2 - Descobrir e Definir</li>
+                        <li>Aula 3 - Desenvolver Soluções</li>
+                        <li>Aula 4 - Entregar e Testar</li>
+                        <li>Aula 5 - Estudo de Caso Prático</li>
+                    </ul>
+                </div>
+
+                <div class="modulo-item">
+                    <div class="modulo-header" onclick="toggleModulo(this)">
+                        <span>Módulo 4: Heurísticas de Nielsen</span>
+                        <span class="seta">▶</span>
+                    </div>
+                    <ul class="aulas-lista">
+                        <li>Aula 1 - O que são Heurísticas</li>
+                        <li>Aula 2 - Visibilidade e Controle</li>
+                        <li>Aula 3 - Consistência e Padrões</li>
+                        <li>Aula 4 - Prevenção de Erros</li>
+                        <li>Aula 5 - Inspeção de Usabilidade</li>
+                    </ul>
+                </div>
+
+                <div class="modulo-item">
+                    <div class="modulo-header" onclick="toggleModulo(this)">
+                        <span>Módulo 5: Projeto Prático</span>
+                        <span class="seta">▶</span>
+                    </div>
+                    <ul class="aulas-lista">
+                        <li>Aula 1 - Arquitetura da Informação</li>
+                        <li>Aula 2 - Wireframes de Baixa Fidelidade</li>
+                        <li>Aula 3 - Prototipagem Interativa</li>
+                        <li>Aula 4 - Testes de Usabilidade</li>
+                        <li>Aula 5 - Considerações Finais do Projeto</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">© 2026 UX na Prática · Aprenda, pratique, evolua.</div>
+    </footer>
+
+    <script>
+        function toggleModulo(header) {
+            const item = header.parentElement;
+            item.classList.toggle('ativo');
+        }
+
+        function toggleDescricao() {
+            const texto = document.getElementById('descricaoTexto');
+            const btn = document.getElementById('btnVerMais');
+
+            if (texto.classList.contains('recolhido')) {
+                texto.classList.remove('recolhido');
+                texto.classList.add('expandido');
+                btn.textContent = 'Ver menos';
+            } else {
+                texto.classList.remove('expandido');
+                texto.classList.add('recolhido');
+                btn.textContent = 'Ver mais';
+            }
+        }
+
+        function verificarTextoComentario(input) {
+            const btn = document.getElementById('btnEnviarComentario');
+            if (input.value.trim().length > 0) {
+                btn.style.display = 'flex';
+            } else {
+                btn.style.display = 'none';
+            }
+        }
+
+        function enviarComentario() {
+            const input = document.getElementById('comentarioInput');
+            const btn = document.getElementById('btnEnviarComentario');
+            input.value = '';
+            btn.style.display = 'none';
+        }
+
+        function proximaAula() {
+            alert('Avançando para a próxima aula...');
+        }
+    </script>
+</body>
+</html>
